@@ -30,8 +30,22 @@ end
 # of n, by definition. Run associated tests via:  `$ rspec spec/part1_spec.rb:42`
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+	return false if arr.size <= 1
+#	return true if arr.size == 1 and n == arr[0]
+	
+	max = arr.size-1
+	arr.each_with_index do |x, i|
+		(i+1).upto(max) { |j| 
+			return true if x + arr[j] == n
+		}
+	end 
+	return false 
 end
+
+raise 'sum_to_n? [] == false' unless sum_to_n?([], 1) == false 
+raise 'sum_to_n?([1], 1) == false' unless sum_to_n?([1], 1) == false
+raise 'sum_to_n?([1,2,3],5) == true' unless sum_to_n?([1,2,3], 5) == true
+raise 'sum_to_n?([1,2,3], 11) == false' unless sum_to_n?([1,2,3], 11) == false
 
 # Part 2
 
